@@ -1,0 +1,18 @@
+package com.igor.bestmovies.domain.usecase
+
+import com.igor.bestmovies.data.repository.PopularShowRepository
+import com.igor.bestmovies.domain.model.Genre
+import javax.inject.Inject
+
+class GetPopularShow @Inject constructor(
+    private val repository: PopularShowRepository
+) {
+    suspend operator fun invoke(
+        genres: List<Genre>
+    ) = repository.fetchPopularShowsAsync()
+        ?.results
+        ?.map { show ->
+            show.copy(genres = genres.filter { show.genreIds?.contains(it.id) == true })
+        }
+        ?: emptyList()
+}
