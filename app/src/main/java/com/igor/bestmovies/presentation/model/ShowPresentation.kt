@@ -1,7 +1,11 @@
-package com.igor.bestmovies.domain.model
+package com.igor.bestmovies.presentation.model
 
-data class Show(
-    val genres: List<Genre>?,
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class ShowPresentation(
+    val genres: List<GenrePresentation>?,
     val originalName: String?,
     val genreIds: List<Int>?,
     val name: String?,
@@ -11,4 +15,4 @@ data class Show(
     val id: Int?,
     val overview: String?,
     val posterPath: String?
-)
+): Parcelable

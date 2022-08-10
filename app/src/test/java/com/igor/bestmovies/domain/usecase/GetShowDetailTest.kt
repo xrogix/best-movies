@@ -1,6 +1,6 @@
 package com.igor.bestmovies.domain.usecase
 
-import com.igor.bestmovies.data.repository.ShowDetailRepository
+import com.igor.bestmovies.domain.repository.ShowDetailRepository
 import com.igor.bestmovies.domain.model.Show
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery

@@ -1,4 +1,4 @@
-package com.igor.bestmovies.data.repository
+package com.igor.bestmovies.domain.repository
 
 import com.igor.bestmovies.domain.model.Show
 

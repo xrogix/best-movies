@@ -1,6 +1,7 @@
 package com.igor.bestmovies.data.repository
 
-import com.igor.bestmovies.data.datasource.Datasource
+import com.igor.bestmovies.domain.datasource.Datasource
+import com.igor.bestmovies.domain.repository.PopularShowRepository
 import javax.inject.Inject
 
 class PopularShowRepositoryImpl @Inject constructor(

@@ -1,8 +1,13 @@
 package com.igor.bestmovies.di
 
-import com.igor.bestmovies.data.datasource.Datasource
 import com.igor.bestmovies.data.datasource.RemoteDatasource
-import com.igor.bestmovies.data.repository.*
+import com.igor.bestmovies.data.repository.GenreRepositoryImpl
+import com.igor.bestmovies.data.repository.PopularShowRepositoryImpl
+import com.igor.bestmovies.data.repository.ShowDetailRepositoryImpl
+import com.igor.bestmovies.domain.datasource.Datasource
+import com.igor.bestmovies.domain.repository.GenreRepository
+import com.igor.bestmovies.domain.repository.PopularShowRepository
+import com.igor.bestmovies.domain.repository.ShowDetailRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

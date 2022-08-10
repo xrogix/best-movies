@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.igor.bestmovies.R
-import com.igor.bestmovies.domain.model.Show
+import com.igor.bestmovies.presentation.model.ShowPresentation
 import com.igor.bestmovies.utils.ImageUrlBuilder
 
 class MainAdapter(
     private val action: (id: Int) -> Unit
 ) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
-    private var shows: List<Show> = emptyList()
+    private var shows: List<ShowPresentation> = emptyList()
 
-    fun setItems(shows: List<Show>) {
+    fun setItems(shows: List<ShowPresentation>) {
         this.shows = shows
         notifyDataSetChanged()
     }
@@ -37,7 +37,7 @@ class MainAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(show: Show, action: (id: Int) -> Unit) {
+        fun bind(show: ShowPresentation, action: (id: Int) -> Unit) {
             val root: ConstraintLayout = itemView.findViewById(R.id.root)
             root.setOnClickListener {
                 show.id?.run { action.invoke(this) }

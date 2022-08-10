@@ -2,10 +2,11 @@ package com.igor.bestmovies.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.igor.bestmovies.domain.model.Show
 import com.igor.bestmovies.domain.usecase.GetGenre
 import com.igor.bestmovies.domain.usecase.GetPopularShow
 import com.igor.bestmovies.domain.usecase.GetShowDetail
+import com.igor.bestmovies.presentation.map.toMapPresentation
+import com.igor.bestmovies.presentation.model.ShowPresentation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -16,24 +17,24 @@ class MainViewModel @Inject constructor(
     private val getShowDetail: GetShowDetail
 ) : BaseViewModel() {
 
-    private val _show = MutableLiveData<List<Show>>()
-    val show : LiveData<List<Show>>
+    private val _show = MutableLiveData<List<ShowPresentation>>()
+    val show : LiveData<List<ShowPresentation>>
         get() = _show
 
-    private val _detail = MutableLiveData<Show>()
-    val detail : LiveData<Show>
+    private val _detail = MutableLiveData<ShowPresentation>()
+    val detail : LiveData<ShowPresentation>
         get() = _detail
 
     fun loadShows() {
         launchViewModel {
             val genres = getGenre()
-            _show.value = getPopularShow(genres)
+            _show.value = getPopularShow(genres).toMapPresentation()
         }
     }
 
     fun getShow(id: Int) {
         launchViewModel {
-            _detail.value = getShowDetail(id)
+            _detail.value = getShowDetail(id)?.toMapPresentation()
         }
     }
 

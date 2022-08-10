@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.igor.bestmovies.R
-import com.igor.bestmovies.domain.model.Show
+import com.igor.bestmovies.presentation.model.ShowPresentation
 import com.igor.bestmovies.utils.ImageUrlBuilder
 
 class DetailFragment : DialogFragment() {
@@ -34,7 +34,7 @@ class DetailFragment : DialogFragment() {
         }
 
         arguments?.apply {
-            getParcelable<Show>(SHOW)?.run {
+            getParcelable<ShowPresentation>(SHOW)?.run {
                 view.findViewById<TextView>(R.id.tvName).text = name
                 view.findViewById<TextView>(R.id.tvOriginalLanguage).text = originalLanguage
                 view.findViewById<TextView>(R.id.tvOriginalName).text = originalName
@@ -52,7 +52,7 @@ class DetailFragment : DialogFragment() {
     companion object {
         private const val SHOW = "show"
 
-        fun newInstance(show: Show): DetailFragment{
+        fun newInstance(show: ShowPresentation): DetailFragment{
             val args = Bundle()
             args.putParcelable(SHOW, show)
 

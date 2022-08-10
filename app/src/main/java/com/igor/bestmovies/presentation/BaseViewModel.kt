@@ -10,6 +10,10 @@ import kotlinx.coroutines.launch
 
 open class BaseViewModel : ViewModel() {
 
+    private val _progress = MutableLiveData<ProgressBarVisibility>()
+    val progress : LiveData<ProgressBarVisibility>
+        get() = _progress
+
     private val _error = MutableLiveData<String>()
     val error: LiveData<String>
         get() = _error
@@ -19,10 +23,18 @@ open class BaseViewModel : ViewModel() {
     }
 
     protected fun launchViewModel(body: suspend () -> Unit) = viewModelScope.launch(handler) {
+        _progress.postValue(ProgressBarVisibility.ProgressBarVisible)
         try {
             body.invoke()
+            _progress.postValue(ProgressBarVisibility.ProgressBarGone)
         } catch (e: NoInternetException) {
+            _progress.postValue(ProgressBarVisibility.ProgressBarGone)
             _error.value = e.message
         }
     }
+}
+
+sealed class ProgressBarVisibility {
+    object ProgressBarVisible: ProgressBarVisibility()
+    object ProgressBarGone: ProgressBarVisibility()
 }

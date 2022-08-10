@@ -1,9 +1,9 @@
 package com.igor.bestmovies.data.repository
 
-import com.igor.bestmovies.data.datasource.Datasource
 import com.igor.bestmovies.di.IoDispatcher
+import com.igor.bestmovies.domain.datasource.Datasource
+import com.igor.bestmovies.domain.repository.GenreRepository
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

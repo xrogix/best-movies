@@ -1,9 +1,9 @@
 package com.igor.bestmovies.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.igor.bestmovies.R
 import dagger.hilt.android.AndroidEntryPoint
