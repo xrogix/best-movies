@@ -12,7 +12,9 @@ class GetPopularShow @Inject constructor(
     ) = repository.fetchPopularShowsAsync()
         ?.results
         ?.map { show ->
-            show.copy(genres = genres.filter { show.genreIds?.contains(it.id) == true })
+            show.copy(genres = genres.filter { genre ->
+                show.genreIds?.contains(genre.id) == true
+            })
         }
         ?: emptyList()
 }
